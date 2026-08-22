@@ -10,9 +10,6 @@ export function ScrollIndicator() {
       animate={{ opacity: 1 }}
       transition={{ delay: 2, duration: 1 }}
     >
-      <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">
-        Scroll
-      </span>
       <motion.div
         className="w-px h-12 bg-gradient-to-b from-gold/40 to-transparent"
         animate={{ scaleY: [1, 0.3, 1] }}

@@ -25,32 +25,32 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-6 pt-16 md:pt-20 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block text-xs tracking-[0.4em] uppercase text-gold/80 mb-8 font-mono border border-gold/20 rounded-full px-6 py-2">
-            Since 2024
+          <span className="inline-block text-[10px] tracking-[0.4em] uppercase text-gold/80 mb-6 font-mono border border-gold/20 rounded-full px-4 py-1.5">
+            Since 2026
           </span>
         </motion.div>
 
         <AnimatedText
           text="Where Every Flavor"
           as="h1"
-          className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display leading-[0.85] tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display leading-[0.9] tracking-tight"
         />
 
         <AnimatedText
           text="Tells a Story"
           as="h1"
-          className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display leading-[0.85] tracking-tight mt-2"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display leading-[0.9] tracking-tight mt-2"
           delay={0.5}
         />
 
         <motion.p
-          className="mt-8 text-lg md:text-xl text-foreground/50 max-w-2xl mx-auto font-light leading-relaxed"
+          className="mt-6 text-base md:text-lg text-foreground/50 max-w-2xl mx-auto font-light leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -60,7 +60,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}

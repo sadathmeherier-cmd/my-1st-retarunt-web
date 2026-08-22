@@ -16,7 +16,7 @@ export function AnimatedText({ text, className, as: Tag = 'h1', delay = 0 }: Ani
   return (
     <Tag className={className} aria-label={text}>
       <span className="sr-only">{text}</span>
-      <span className="inline-flex flex-wrap">
+      <span className="inline-flex flex-wrap whitespace-nowrap">
         {letters.map((letter, i) => (
           <motion.span
             key={i}

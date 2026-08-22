@@ -1,14 +1,20 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 function ParticleField({ count = 50 }: { count?: number }) {
   const meshRef = useRef<THREE.Points>(null);
+  const geometryRef = useRef<THREE.BufferGeometry | null>(null);
+  const velocitiesRef = useRef<{ x: number; y: number; z: number }[]>([]);
+  const initializedRef = useRef(false);
 
-  const particles = useMemo(() => {
-    const geometry = new THREE.BufferGeometry();
+  useEffect(() => {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
+    const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(count * 3);
     const velocities: { x: number; y: number; z: number }[] = [];
 
@@ -23,31 +29,41 @@ function ParticleField({ count = 50 }: { count?: number }) {
       });
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    return { geometry, velocities };
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometryRef.current = geo;
+    velocitiesRef.current = velocities;
+
+    if (meshRef.current) {
+      meshRef.current.geometry = geo;
+    }
   }, [count]);
 
-  useFrame((state) => {
-    if (!meshRef.current) return;
-    const positions = meshRef.current.geometry.attributes.position.array as Float32Array;
+  useFrame(() => {
+    const mesh = meshRef.current;
+    const velocities = velocitiesRef.current;
+    const positionAttribute = mesh?.geometry.getAttribute('position');
+
+    if (!mesh || !positionAttribute || velocities.length < count) return;
+
+    const positions = positionAttribute.array as Float32Array;
 
     for (let i = 0; i < count; i++) {
-      positions[i * 3] += particles.velocities[i].x;
-      positions[i * 3 + 1] += particles.velocities[i].y;
-      positions[i * 3 + 2] += particles.velocities[i].z;
+      positions[i * 3] += velocities[i].x;
+      positions[i * 3 + 1] += velocities[i].y;
+      positions[i * 3 + 2] += velocities[i].z;
 
-      if (Math.abs(positions[i * 3]) > 10) particles.velocities[i].x *= -1;
-      if (Math.abs(positions[i * 3 + 1]) > 10) particles.velocities[i].y *= -1;
-      if (Math.abs(positions[i * 3 + 2]) > 10) particles.velocities[i].z *= -1;
+      if (Math.abs(positions[i * 3]) > 10) velocities[i].x *= -1;
+      if (Math.abs(positions[i * 3 + 1]) > 10) velocities[i].y *= -1;
+      if (Math.abs(positions[i * 3 + 2]) > 10) velocities[i].z *= -1;
     }
 
-    meshRef.current.geometry.attributes.position.needsUpdate = true;
-    meshRef.current.rotation.y += 0.0002;
+    positionAttribute.needsUpdate = true;
+    mesh.rotation.y += 0.0002;
   });
 
   return (
     <points ref={meshRef}>
-      <bufferGeometry {...particles.geometry} />
+      <bufferGeometry ref={geometryRef} />
       <pointsMaterial
         size={0.03}
         color="#d4a853"

@@ -55,34 +55,34 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="relative py-24 md:py-32 px-6 overflow-hidden border-t border-glass-border">
+    <footer className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6 overflow-hidden border-t border-glass-border safe-bottom">
       <div className="absolute inset-0 bg-gradient-to-t from-gold/[0.02] to-transparent" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-3xl font-display text-gradient tracking-tight block mb-6">
+            <span className="text-2xl md:text-3xl font-display text-gradient tracking-tight block mb-4 md:mb-6">
               Ember & Oak
             </span>
-            <p className="text-foreground/40 text-sm leading-relaxed max-w-sm">
+            <p className="text-xs md:text-sm text-foreground/40 leading-relaxed max-w-sm">
               Where Fire Meets Flavor. An intimate dining experience crafted with
               passion, precision, and the finest ingredients.
             </p>
           </motion.div>
 
-          <motion.div
-            className="flex flex-col md:flex-row gap-12"
+<motion.div
+            className="flex flex-col sm:flex-row gap-8 sm:gap-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div>
+            <div className="flex-1">
               <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-6">
                 Links
               </h4>
@@ -99,7 +99,7 @@ export function FooterSection() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="flex-1">
               <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-6">
                 Follow Us
               </h4>
@@ -127,23 +127,23 @@ export function FooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-6">
+            <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-4 md:mb-6">
               Newsletter
             </h4>
-            <p className="text-sm text-foreground/40 mb-4">
+            <p className="text-xs md:text-sm text-foreground/40 mb-4">
               Subscribe for exclusive events and menu previews.
             </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="flex-1 bg-glass border border-glass-border rounded-full px-5 py-3 text-sm text-foreground outline-none focus:border-gold/50 transition-colors placeholder:text-foreground/20"
+                className="flex-1 bg-glass border border-glass-border rounded-full px-4 md:px-5 py-2.5 md:py-3 text-xs md:text-sm text-foreground outline-none focus:border-gold/50 transition-colors placeholder:text-foreground/20"
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-gold text-black text-xs tracking-widest uppercase rounded-full font-semibold hover:bg-gold-light transition-colors whitespace-nowrap"
+                className="px-4 md:px-6 py-2.5 md:py-3 bg-gold text-black text-[10px] md:text-xs tracking-widest uppercase rounded-full font-semibold hover:bg-gold-light transition-colors whitespace-nowrap"
               >
                 {subscribed ? '✓ Sent' : 'Join'}
               </button>
@@ -152,20 +152,20 @@ export function FooterSection() {
         </div>
 
         <motion.div
-          className="pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4"
+          className="pt-6 md:pt-8 border-t border-glass-border flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-xs text-foreground/30">
+          <p className="text-[10px] md:text-xs text-foreground/30">
             © 2024 Ember & Oak. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-xs text-foreground/30 hover:text-gold/60 transition-colors">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 md:gap-4 md:gap-6">
+            <a href="#" className="text-[10px] md:text-xs text-foreground/30 hover:text-gold/60 transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-xs text-foreground/30 hover:text-gold/60 transition-colors">
+            <a href="#" className="text-[10px] md:text-xs text-foreground/30 hover:text-gold/60 transition-colors">
               Terms of Service
             </a>
           </div>

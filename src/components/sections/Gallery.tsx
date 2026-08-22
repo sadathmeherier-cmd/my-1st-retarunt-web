@@ -39,14 +39,10 @@ function TiltCard({
     cardRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
   };
 
-  const spanCols = item.w > 1 ? 'md:col-span-2' : '';
-  const spanRows = item.h > 1 ? 'md:row-span-2' : '';
-  const aspect = item.h > item.w ? 'aspect-[3/4]' : item.w > item.h ? 'aspect-[4/3]' : 'aspect-square';
-
   return (
     <motion.div
       ref={cardRef}
-      className={`relative group cursor-pointer overflow-hidden rounded-2xl ${spanCols} ${spanRows} ${aspect}`}
+      className={`relative group cursor-pointer overflow-hidden rounded-2xl aspect-[3/4] sm:aspect-[4/3] md:aspect-auto md:col-span-2 md:row-span-2 lg:col-span-1 lg:row-span-1`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -58,8 +54,8 @@ function TiltCard({
     >
       <div className="absolute inset-0 bg-gradient-to-br from-amber/10 via-warm to-background group-hover:scale-110 transition-transform duration-700" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-        <p className="text-sm tracking-widest uppercase text-gold">{item.label}</p>
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <p className="text-xs sm:text-sm tracking-widest uppercase text-gold">{item.label}</p>
       </div>
     </motion.div>
   );
@@ -114,7 +110,7 @@ export function GallerySection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeading title="Gallery" subtitle="Visual Journey" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto] gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-[auto] gap-4 sm:gap-5 auto-rows-[200px] sm:auto-rows-[240px] md:auto-rows-[280px]">
           {galleryItems.map((item, i) => (
             <TiltCard key={item.id} item={item} index={i} onSelect={setSelected} />
           ))}

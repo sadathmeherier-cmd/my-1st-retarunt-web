@@ -10,6 +10,7 @@ import { MenuSection } from '@/components/sections/Menu';
 import { ChefSection } from '@/components/sections/Chef';
 import { GallerySection } from '@/components/sections/Gallery';
 import { TestimonialsSection } from '@/components/sections/Testimonials';
+import { FAQSection } from '@/components/sections/FAQ';
 import { ReservationSection } from '@/components/sections/Reservation';
 import { FooterSection } from '@/components/sections/Footer';
 import { CustomCursor } from '@/components/ui/CustomCursor';
@@ -26,7 +27,8 @@ export default function Home() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
+      infinite: false,
     });
 
     function raf(time: number) {
@@ -56,6 +58,7 @@ export default function Home() {
         <ChefSection />
         <GallerySection />
         <TestimonialsSection />
+        <FAQSection />
         <ReservationSection />
       </main>
       <FooterSection />

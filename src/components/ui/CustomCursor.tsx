@@ -6,17 +6,16 @@ import { useMousePosition } from '@/hooks/useMousePosition';
 
 export function CustomCursor() {
   const { x, y } = useMousePosition();
+  const [isMounted, setIsMounted] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
+    setIsMounted(true);
 
-  useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const isClickable =
@@ -30,7 +29,7 @@ export function CustomCursor() {
     return () => window.removeEventListener('mouseover', handleMouseOver);
   }, []);
 
-  if (typeof window === 'undefined') return null;
+  if (!isMounted) return null;
 
   return (
     <>

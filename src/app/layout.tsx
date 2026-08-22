@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} scroll-smooth`}
     >
-      <body className="bg-background text-foreground font-sans antialiased noise-overlay">
+      <body className="bg-background text-foreground font-sans antialiased noise-overlay safe-area-insets">
         {children}
       </body>
     </html>

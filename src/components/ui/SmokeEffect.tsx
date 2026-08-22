@@ -13,7 +13,7 @@ export function SmokeEffect() {
     if (!ctx) return;
 
     let animationId: number;
-    let particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number }[] = [];
+    const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number }[] = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;

@@ -84,22 +84,22 @@ export function ReservationSection() {
                 </p>
               </motion.div>
             ) : (
-              <motion.form
+<motion.form
                 key="form"
                 onSubmit={handleSubmit}
-                className="glass-strong rounded-3xl p-8 md:p-12 space-y-6"
+                className="glass-strong rounded-3xl p-6 md:p-12 space-y-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <Field label="Name" error={errors.name}>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => handleChange('name', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20 text-sm sm:text-base"
                       placeholder="Your name"
                     />
                   </Field>
@@ -108,7 +108,7 @@ export function ReservationSection() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleChange('email', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20 text-sm sm:text-base"
                       placeholder="your@email.com"
                     />
                   </Field>
@@ -117,7 +117,7 @@ export function ReservationSection() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleChange('phone', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors placeholder:text-foreground/20 text-sm sm:text-base"
                       placeholder="+1 (555) 000-0000"
                     />
                   </Field>
@@ -125,7 +125,7 @@ export function ReservationSection() {
                     <select
                       value={formData.guests}
                       onChange={(e) => handleChange('guests', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors text-sm sm:text-base"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                         <option key={n} value={n} className="bg-background">
@@ -139,7 +139,7 @@ export function ReservationSection() {
                       type="date"
                       value={formData.date}
                       onChange={(e) => handleChange('date', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors [color-scheme:dark]"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors [color-scheme:dark] text-sm sm:text-base"
                     />
                   </Field>
                   <Field label="Time" error={errors.time}>
@@ -147,23 +147,23 @@ export function ReservationSection() {
                       type="time"
                       value={formData.time}
                       onChange={(e) => handleChange('time', e.target.value)}
-                      className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors [color-scheme:dark]"
+                      className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors [color-scheme:dark] text-sm sm:text-base"
                     />
                   </Field>
                 </div>
 
-                <Field label="Special Requests">
+<Field label="Special Requests">
                   <textarea
                     value={formData.notes}
                     onChange={(e) => handleChange('notes', e.target.value)}
-                    className="w-full bg-transparent border-b border-glass-border py-3 text-foreground outline-none focus:border-gold transition-colors resize-none placeholder:text-foreground/20"
+                    className="w-full bg-transparent border-b border-glass-border py-2.5 sm:py-3 text-foreground outline-none focus:border-gold transition-colors resize-none placeholder:text-foreground/20 text-sm sm:text-base"
                     placeholder="Allergies, celebrations, seating preferences..."
                     rows={2}
                   />
                 </Field>
 
-                <div className="pt-4">
-                  <RippleButton variant="primary" className="w-full">
+                <div className="pt-2 sm:pt-4">
+                  <RippleButton variant="primary" className="w-full py-3 sm:py-4 text-sm sm:text-base">
                     Confirm Reservation
                   </RippleButton>
                 </div>
