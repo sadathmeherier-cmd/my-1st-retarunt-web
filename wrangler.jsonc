@@ -1,6 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "my-1st-retarunt-website",
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets"
+  },
   "compatibility_date": "2026-08-20",
   "observability": {
     "enabled": true

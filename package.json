@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "build:opennext": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "preview": "npm run build:opennext && opennextjs-cloudflare preview",
+    "deploy": "npm run build:opennext && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
